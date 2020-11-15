@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #catalog {
+            float: left
+        }
+        [id*=produs]{
+            width: 260px;
+            height: 160px;
+            box-shadow: #000  0 0 5px;
+            padding: 0 20px 20px;
+            margin: 10px 0
+        } 
+        h2 {
+            text-align: center
+        }
+        .img {
+            float: left;
+            width: 100px;
+            height: 100px;
+            background: #ccc;
+            border: 1px solid black
+        }
+        .desc {
+            float: left;
+            padding-left: 10px;
+            font-size: 14px;
+            width: 145px
+        }
+        .desc button {
+            float: right;
+            margin-top: 20px
+        }
+        #cos {
+            float: left;
+            border: 1px solid #333;
+            min-width: 200px;
+            padding: 0 20px 20px;
+            margin: 20px 0 20px 50px;
+        }
+        #nr_prod {
+            font-size: 30px;
+            color: red
+        }
+        #cerinta {
+            float: left;
+            width: 550px;
+            margin-left: 50px
+        }
+    </style>
+</head>
+<body>
+<div id="catalog">
+    <div id="produs1">
+        <h2>Boabe de cafea</h2>
+        <div class="img" style="background-image:url(images/product-1-1.jpg);"></div>
+        <div class="desc">
+            Aroma de cafea te va invalui de fieacare data cand vei aprinde aceasta lumanare parfumata!
+            <button class="adauga">add to cart</button>
+        </div>
+    </div>
+    
+    <div id="produs2">
+        <h2>Fructe de padure</h2>
+        <div class="img" style="background-image:url(images/product-2-1.jpg);"></div>
+        <div class="desc">
+            Lumanare parfumata cu aroma placuta de fructe de padure, relaxanta si imbietoare.
+            <button class="adauga">add to cart</button>
+        </div>
+    </div>
+    
+    <div id="produs3">
+        <h2>Lemon & Lime</h2>
+        <div class="img" style="background-image:url(images/product-3-1.jpg);"></div>
+        <div class="desc">
+            Lumanare parfumata cu miros puternic de lamai, improspateaza si parfumeaza spatiile cu aroma ta preferata.
+            <button class="adauga">add to cart</button>
+        </div>
+    </div>
+</div>
+<div id="cos">
+    <p>Produse aflate in cos: <span id="nr_prod">0</span></p>
+    <button id="afiseaza">afiseaza produsele</button>
+    <div id="lista"></div>
+</div>
+    
+    
+    
+   
+ 
+ 
+ <script>
+var produse = [];
+
+function adauga(){
+	produse.push(this.parentNode.parentNode.querySelector("h2").innerHTML);
+	document.getElementById("nr_prod").innerHTML = produse.length;
+}
+
+var butoane = document.getElementsByClassName("adauga");
+
+for(var i=0;i<butoane.length;i++){
+	butoane[i].addEventListener("click",adauga);
+}
+
+function afiseaza(){
+	var i;
+	var lungime=produse.length;
+	var html="";
+	for(i=0;i<lungime;i++){
+		html += "<p>"+ produse[i] +"</p>"
+	}
+	document.getElementById("lista").innerHTML = html;
+}
+document.getElementById("afiseaza").addEventListener("click",afiseaza);
+ 
+ </script>
+</body>
+</html>
